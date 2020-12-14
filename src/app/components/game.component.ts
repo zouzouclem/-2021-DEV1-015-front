@@ -7,13 +7,17 @@ import {Game} from "../models/game.model";
   template: `
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-4">
+            <div class="col-3">
                 <h2>Tic Tac Toe</h2>
             </div>
         </div>
         <div class="row justify-content-center">
-        <div class="col-3">
-            <h4 *ngIf="!game?.gameOver && !game?.awinner">{{game?.current?.pawn}} to play</h4>
+            <div class="col-3" *ngIf="!game?.gameOver && !game?.awinner">
+                <h4>{{game?.current?.pawn}} to play</h4>
+            </div>
+        <div class="col-3" *ngIf="game?.gameOver || game?.awinner">
+            <h4 *ngIf="game?.awinner">{{game?.current?.pawn}} WINS !!!</h4>
+            <h4 *ngIf="game?.gameOver"> Draw !!!</h4>
         </div>
         </div>
    
@@ -26,12 +30,6 @@ import {Game} from "../models/game.model";
               </div>
           </div>
       </div>
-    <div class="row justify-content-center">
-        <div class="col-3">
-    <div *ngIf="game?.awinner">{{game?.current?.pawn}} WINS !!!</div>
-    <div *ngIf="game?.gameOver">Draw !!!</div>
-        </div>
-    </div>
 
     <div class="row justify-content-center mt-4">
         <div class="col-3">
